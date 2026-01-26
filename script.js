@@ -10,7 +10,7 @@ lucide.createIcons();
  const projects = [
   { name: "JENOVA", desc: "Plateforme éducative et sociale valorisant les talents locaux.", icon: "users", link: "https://le-seul-1.github.io/JENOVA/" },
   { name: "EXETAT PREP", desc: "Plateforme de préparation aux examens avec cours et exercices.", icon: "book-open", link: "https://exetatrdc.lovable.app" },
-  { name: "EduBOURSE", desc: "Plateforme centralisant les informatio ns sur les bourses.", icon: "award", link: "https://edubourse.example.com" },
+  { name: "EduBOURSE", desc: "Plateforme centralisant les informations sur les bourses.", icon: "award", link: "https://edubourse.example.com" },
   { name: "E-Santé Triage", desc: "Système de triage médical autonome.", icon: "heart-pulse", link: "https://docu-flow-ai-1b346baa.base44.app" }
 ];
 

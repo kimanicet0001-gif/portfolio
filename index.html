@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>KIM Anicet | Portfolio</title>
-  <meta name="description" content="Portfolio de KIM Anicet, étudiant en Télécommunications, développeur web et expert en sécurité réseaux.">
+  <meta name="description"
+    content="Portfolio de KIM Anicet, expert en Télécommunications, sécurité réseaux et création de contenu.">
 
-  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
 
   <script>
@@ -18,22 +17,27 @@
         extend: {
           colors: {
             primary: "#6366f1",
-            dark: "#0f172a",
+            secondary: "#a855f7",
+            dark: "#050505",
           },
           animation: {
-            fadeSlide: "fadeSlide 1s ease forwards",
-            blob: "blob 7s infinite",
+            fadeSlide: "fadeSlide 0.8s ease-out forwards",
+            blob: "blob 10s infinite",
+            float: "float 6s ease-in-out infinite",
           },
           keyframes: {
             fadeSlide: {
-              "0%": { opacity: 0, transform: "translateY(30px)" },
+              "0%": { opacity: 0, transform: "translateY(20px)" },
               "100%": { opacity: 1, transform: "translateY(0)" }
             },
             blob: {
-              "0%": { transform: "translate(0px,0px) scale(1)" },
-              "33%": { transform: "translate(30px,-50px) scale(1.1)" },
-              "66%": { transform: "translate(-20px,20px) scale(0.9)" },
-              "100%": { transform: "translate(0px,0px) scale(1)" },
+              "0%, 100%": { transform: "translate(0px, 0px) scale(1)" },
+              "33%": { transform: "translate(50px, -70px) scale(1.2)" },
+              "66%": { transform: "translate(-40px, 40px) scale(0.8)" },
+            },
+            float: {
+              "0%, 100%": { transform: "translateY(0)" },
+              "50%": { transform: "translateY(-20px)" },
             }
           }
         }
@@ -42,180 +46,240 @@
   </script>
 
   <style>
-    html { scroll-behavior: smooth; }
-    .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); }
-    .card-hover:hover { border-color: #6366f1; box-shadow: 0 0 20px rgba(99,102,241,0.2); }
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .glass {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .text-gradient {
+      background: linear-gradient(to right, #6366f1, #a855f7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .bg-grid {
+      background-image: radial-gradient(circle at 2px 2px, rgba(255, 255, 255, 0.05) 1px, transparent 0);
+      background-size: 40px 40px;
+    }
+
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #050505;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #333;
+      border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #6366f1;
+    }
   </style>
 </head>
 
-<body class="bg-dark text-gray-100 font-sans selection:bg-primary selection:text-white overflow-x-hidden">
+<body class="bg-dark text-gray-200 font-sans selection:bg-primary/30 bg-grid">
 
-<!-- Animated Background Blobs -->
-<div class="fixed top-0 -left-4 w-72 h-72 bg-primary/20 rounded-full mix-blend-screen filter blur-[80px] animate-blob"></div>
-<div class="fixed bottom-0 -right-4 w-72 h-72 bg-indigo-900/30 rounded-full mix-blend-screen filter blur-[80px] animate-blob animation-delay-2000"></div>
+  <div class="fixed top-0 -left-20 w-96 h-96 bg-primary/20 rounded-full blur-[120px] animate-blob"></div>
+  <div class="fixed bottom-0 -right-20 w-96 h-96 bg-secondary/10 rounded-full blur-[120px] animate-blob"
+    style="animation-delay: 4s"></div>
 
-<!-- NAVBAR -->
-<nav class="fixed w-full z-50 glass border-b border-white/10 backdrop-blur-md">
-  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-    <a href="#" class="text-xl font-black tracking-tighter text-white">
-      KIM<span class="text-primary">ANICET</span>
-    </a>
-
-    <!-- Desktop Menu -->
-    <div class="hidden md:flex gap-10 text-xs uppercase font-bold tracking-widest text-gray-300">
-      <a href="#about" class="hover:text-primary transition-colors">À propos</a>
-      <a href="#skills" class="hover:text-primary transition-colors">Expertise</a>
-      <a href="#projects" class="hover:text-primary transition-colors">Projets</a>
-      <a href="#contact" class="hover:text-primary transition-colors">Contact</a>
-    </div>
-
-    <!-- Mobile Button -->
-    <button id="menuBtn" class="md:hidden text-primary p-2 rounded hover:bg-primary/20 transition">
-      <i data-lucide="menu"></i>
-    </button>
-  </div>
-
-  <!-- Mobile Menu -->
-  <div id="mobileMenu" class="hidden md:hidden bg-dark/95 border-t border-white/10 p-6 space-y-4 text-center font-bold uppercase text-sm">
-    <a href="#about" class="block py-2 hover:text-primary transition">À propos</a>
-    <a href="#skills" class="block py-2 hover:text-primary transition">Expertise</a>
-    <a href="#projects" class="block py-2 hover:text-primary transition">Projets</a>
-    <a href="#contact" class="block py-2 text-primary border border-primary/30 rounded-lg hover:bg-primary/20 transition">Contact</a>
-  </div>
-</nav>
-
-<!-- HERO -->
-<header class="relative min-h-screen flex items-center justify-center text-center px-6">
-  <div class="max-w-4xl z-10 animate-fadeSlide mt-20">
-    <span class="inline-block px-4 py-1.5 mb-6 text-xs font-semibold tracking-widest uppercase bg-primary/10 text-primary border border-primary/20 rounded-full">
-      Développeur & Expert Réseaux
-    </span>
-    <h1 class="text-5xl md:text-7xl font-extrabold leading-tight tracking-tight">
-      Je conçois, développe <br />
-      <span class="text-primary italic">et sécurise vos idées</span>
-    </h1>
-    <p class="mt-8 text-gray-400 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
-      Étudiant en Télécommunications — Spécialiste <strong>Systèmes & Sécurité Réseau</strong>. 
-      Je fusionne code moderne et infrastructures robustes.
-    </p>
-    <div class="mt-12 flex flex-col sm:flex-row justify-center gap-5">
-      <a href="#projects" class="px-8 py-4 bg-primary text-white rounded-2xl font-bold shadow-lg shadow-primary/20 hover:shadow-primary/40 hover:-translate-y-1 transition-all">
-        Explorer mes travaux
+  <nav class="fixed w-full z-50 px-4 md:px-6 py-4">
+    <div class="max-w-6xl mx-auto glass rounded-2xl px-6 py-3 flex justify-between items-center border-white/5">
+      <a href="#" class="text-xl font-black tracking-tighter">
+        KIM<span class="text-primary">ANICET</span>
       </a>
-      <a href="#contact" class="px-8 py-4 glass rounded-2xl font-bold hover:bg-white/5 transition-all">
-        Discutons ensemble
-      </a>
-    </div>
-  </div>
-</header>
-
-<!-- ABOUT -->
-<section id="about" class="py-32 relative">
-  <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-20 px-6 items-center">
-    <!-- PHOTO -->
-    <div class="relative group">
-      <div class="absolute -inset-1 bg-gradient-to-r from-primary to-indigo-600 rounded-b-3xl  blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
-      <div class="relative aspect-square rounded-br-[19%] rounded-bl-[19%] overflow-hidden glass border-white/20">
-        <img src="./innovation@FocusTech4(35) (1).jpg" alt="KIM Anicet" class="w-full h-full object-cover">
+      
+      <div class="hidden md:flex gap-8 text-xs uppercase font-bold tracking-widest">
+        <a href="#about" class="hover:text-primary transition-colors">À propos</a>
+        <a href="#skills" class="hover:text-primary transition-colors">Expertise</a>
+        <a href="#projects" class="hover:text-primary transition-colors">Projets</a>
+        <a href="#contact"
+          class="px-4 py-2 bg-primary/10 text-primary rounded-lg border border-primary/20 hover:bg-primary hover:text-white transition-all">Contact</a>
       </div>
+
+      <button id="menuBtn" class="md:hidden text-white p-2">
+        <i data-lucide="menu"></i>
+      </button>
     </div>
 
-    <!-- TEXTE -->
-    <div class="space-y-6">
-      <h3 class="text-4xl font-bold">L'expertise au service de <span class="text-primary">l'innovation</span></h3>
-      <p class="text-gray-400 text-lg leading-relaxed">
-        Je m'appelle <strong class="text-amber-500">KIM Anicet</strong>. Ma force réside dans la double compétence : 
-        l'administration de réseaux complexes et le développement d'interfaces web intuitives.
+    <div id="mobileMenu" class="hidden md:hidden mt-2 glass rounded-2xl p-6 flex flex-col gap-4 text-center font-bold uppercase text-xs tracking-widest animate-fadeSlide">
+        <a href="#about" class="py-2 hover:text-primary transition">À propos</a>
+        <a href="#skills" class="py-2 hover:text-primary transition">Expertise</a>
+        <a href="#projects" class="py-2 hover:text-primary transition">Projets</a>
+        <a href="#contact" class="py-3 bg-primary/20 text-primary rounded-xl">Contact</a>
+    </div>
+  </nav>
+
+  <header class="relative min-h-screen flex items-center justify-center px-6 overflow-hidden">
+    <div class="max-w-4xl z-10 text-center animate-fadeSlide">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 mb-8">
+        <span class="relative flex h-2 w-2">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+        </span>
+        <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400">Disponible pour de nouveaux défis</span>
+      </div>
+
+      <h1 class="text-4xl sm:text-6xl md:text-8xl font-black tracking-tighter mb-6 leading-tight">
+        Innover par le <br /> <span class="text-gradient italic">Code & Réseau</span>
+      </h1>
+
+      <p class="text-gray-400 text-base md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
+        Étudiant en <strong>Télécommunications</strong> et en <strong>Systèmes & Sécurité des Réseaux</strong>,
+        avec un intérêt marqué pour le <strong>marketing digital</strong>.
+        Je conçois des infrastructures fiables et développe des solutions web, tout en intégrant des stratégies
+        numériques adaptées aux besoins de visibilité et de communication.
       </p>
-      <p class="text-gray-400 text-lg leading-relaxed">
-        Je maîtrise le <strong>réseau et la cybersécurité</strong> : administration, configuration firewall, protection des systèmes. Je peux sécuriser des infrastructures tout en développant des solutions web.
-      </p>
-      <p class="text-gray-400 text-lg leading-relaxed">
-        Je combine également <strong>art oratoire et pitch de projet</strong> pour présenter mes solutions devant partenaires ou investisseurs.
-      </p>
-    </div>
-  </div>
-</section>
 
-<!-- SKILLS -->
-<section id="skills" class="py-32 bg-white/[0.02]">
-  <div class="max-w-7xl mx-auto px-6 text-center">
-    <h3 class="text-3xl font-bold mb-16 italic">Compétences clés</h3>
-    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-      <div class="p-8 glass rounded-2xl card-hover transition-all group">
-        <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6 mx-auto group-hover:bg-primary transition-colors">
-          <i data-lucide="code" class="text-primary group-hover:text-white"></i>
-        </div>
-        <h4 class="font-bold mb-3 uppercase tracking-wider">Web Dev</h4>
-        <p class="text-sm text-gray-400">HTML, CSS, Tailwind, JS, Vibe Coding, Intégration IA.</p>
-      </div>
-      <div class="p-8 glass rounded-2xl card-hover transition-all group">
-        <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6 mx-auto group-hover:bg-primary transition-colors">
-          <i data-lucide="shield-check" class="text-primary group-hover:text-white"></i>
-        </div>
-        <h4 class="font-bold mb-3 uppercase tracking-wider">Sécurité & Réseau</h4>
-        <p class="text-sm text-gray-400">Firewall, Pentest, VPN, Administration Linux et réseaux.</p>
-      </div>
-      <div class="p-8 glass rounded-2xl card-hover transition-all group">
-        <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6 mx-auto group-hover:bg-primary transition-colors">
-          <i data-lucide="database" class="text-primary group-hover:text-white"></i>
-        </div>
-        <h4 class="font-bold mb-3 uppercase tracking-wider">Systèmes</h4>
-        <p class="text-sm text-gray-400">Langage C, SQL, Gestion de serveurs et systèmes distants.</p>
-      </div>
-      <div class="p-8 glass rounded-2xl card-hover transition-all group">
-        <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6 mx-auto group-hover:bg-primary transition-colors">
-          <i data-lucide="mic" class="text-primary group-hover:text-white"></i>
-        </div>
-        <h4 class="font-bold mb-3 uppercase tracking-wider">Art Oratoire</h4>
-        <p class="text-sm text-gray-400">Pitch, vulgarisation, présentation de projets devant public.</p>
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <a href="#projects"
+          class="group px-8 py-4 bg-primary text-white rounded-xl font-bold transition-all hover:scale-105 hover:shadow-[0_0_30px_rgba(99,102,241,0.4)] flex items-center justify-center gap-2">
+          Voir mes projets <i data-lucide="arrow-right"
+            class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+        </a>
+        <a href="#about" class="px-8 py-4 glass rounded-xl font-bold hover:bg-white/10 transition-all text-center">Mon parcours</a>
       </div>
     </div>
-  </div>
-</section>
+  </header>
 
-<!-- PROJECTS -->
-<section id="projects" class="py-28 bg-black/30">
-  <div class="max-w-7xl mx-auto px-6">
-    <h3 class="text-3xl font-bold mb-12 text-center animate-fadeSlide">Projets</h3>
-    <div id="projectsGrid" class="grid md:grid-cols-4 gap-4"></div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact" class="py-28 bg-primary/5 border-y border-white/5">
-  <div class="max-w-3xl mx-auto px-6 text-center">
-    <h3 class="text-4xl font-bold mb-8">Entrons en contact</h3>
-    <p class="text-gray-400 mb-12 text-lg">
-      Disponible sur plusieurs plateformes pour discuter de projets ou opportunités.
-    </p>
-
-    <div class="flex flex-wrap justify-center gap-6">
-      <a href="mailto:kimanicet0001@gmail.com" class="flex items-center gap-3 px-6 py-3 bg-blue-600 rounded-xl text-white font-semibold hover:scale-105 transition transform">
-        <i data-lucide="mail"></i> Mail
-      </a>
-      <a href="https://wa.me/25762211729" target="_blank" class="flex items-center gap-3 px-6 py-3 bg-green-500 rounded-xl text-white font-semibold hover:scale-105 transition transform">
-        <i data-lucide="message-circle"></i> WhatsApp
-      </a>
-      <a href="https://www.linkedin.com/in/kimanicet/" target="_blank" class="flex items-center gap-3 px-6 py-3 bg-indigo-600 rounded-xl text-white font-semibold hover:scale-105 transition transform">
-        <i data-lucide="linkedin"></i> LinkedIn
-      </a>
-      <a href=" https://www.facebook.com/nshokba.kimking.9 " target="_blank" class="flex items-center gap-3 px-6 py-3 bg-blue-700 rounded-xl text-white font-semibold hover:scale-105 transition transform">
-        <i data-lucide="facebook"></i> Facebook
-      </a>
+  <section id="about" class="py-20 md:py-32 relative">
+    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+      <div class="relative animate-float order-2 md:order-1">
+        <div class="absolute -inset-4 bg-gradient-to-tr from-primary/30 to-secondary/30 blur-2xl rounded-full"></div>
+        <div class="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
+          <img src="./innovation@FocusTech4(35) (1).jpg" alt="KIM Anicet"
+            class="w-full h-[50vh] md:h-[80vh] grayscale hover:grayscale-0 transition-all duration-700 object-cover aspect-[4/5]">
+        </div>
+      </div>
+      <div class="order-1 md:order-2">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">L'ingénierie au service de la <span class="text-primary">créativité</span>.</h2>
+        <div class="space-y-4 text-gray-400 text-lg">
+          <p>Moi c'est <strong>NSHOKANO MUSHARHAMINA Charmant</strong>, alias <strong class="text-amber-500">KIM Anicet</strong>. Profil hybride, j'évolue à l'intersection des réseaux sécurisés et du marketing digital.</p>
+          <p>Mon but ? Transformer la complexité technique en solutions accessibles et esthétiques.</p>
+        </div>
+        <div class="mt-8 flex flex-wrap gap-2">
+          <span class="px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-xs md:text-sm font-medium">Telecom & Cloud</span>
+          <span class="px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-xs md:text-sm font-medium">Cybersecurity</span>
+          <span class="px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-xs md:text-sm font-medium">AI Prompting</span>
+          <span class="px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-xs md:text-sm font-medium">Digital Strategy</span>
+        </div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- FOOTER -->
-<footer class="py-12 text-center text-gray-500 border-t border-white/5">
-  <p class="text-sm italic">© 2025 — KIM Anicet. Passion humaine, logique algorithmique.</p>
-</footer>
+  <section id="skills" class="py-20 md:py-32 bg-white/[0.01]">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold">Expertise Technique</h2>
+        <div class="h-1 w-20 bg-primary mx-auto mt-4 rounded-full"></div>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <div class="p-8 glass rounded-3xl hover:border-primary/50 transition-all group">
+          <i data-lucide="shield-check"
+            class="w-10 h-10 text-primary mb-6 group-hover:scale-110 transition-transform"></i>
+          <h3 class="text-xl font-bold mb-2">Sécurité & Réseau</h3>
+          <p class="text-gray-400 text-sm">Réseau info, Administration Linux, VPN, Pentesting et gestion de Firewalls
+            pour infrastructures critiques.</p>
+        </div>
+        <div class="p-8 glass rounded-3xl hover:border-primary/50 transition-all group">
+          <i data-lucide="layout" class="w-10 h-10 text-secondary mb-6 group-hover:scale-110 transition-transform"></i>
+          <h3 class="text-xl font-bold mb-2">Développement Web </h3>
+          <p class="text-gray-400 text-sm">Création d'interfaces modernes avec HTML,CSS, Tailwind CSS, Java Script et du
+            Vibe Coding</p>
+        </div>
+        <div class="p-8 glass rounded-3xl hover:border-primary/50 transition-all group">
+          <i data-lucide="zap" class="w-10 h-10 text-yellow-500 mb-6 group-hover:scale-110 transition-transform"></i>
+          <h3 class="text-xl font-bold mb-2">Marketing & IA</h3>
+          <p class="text-gray-400 text-sm">Stratégie de contenu, Prompt Engineering et automatisation pour booster la
+            visibilité.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<!-- SCRIPTS -->
-<script src="./script.js">
-  
-</script>
+  <section id="projects" class="py-20 md:py-32">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-3xl font-bold mb-12 text-center italic">Projets Sélectionnés</h2>
+      <div id="projectsGrid" class="grid grid-cols-1 sm:grid-cols-2 gap-8"></div>
+    </div>
+  </section>
 
+  <section id="contact" class="py-20 md:py-32">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="glass rounded-[2rem] md:rounded-[3rem] p-8 md:p-12 text-center border-primary/20 relative overflow-hidden">
+        <div class="absolute top-0 right-0 p-8 opacity-10 hidden md:block"><i data-lucide="message-square" class="w-32 h-32"></i></div>
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">Prêt à démarrer un projet ?</h2>
+        <p class="text-gray-400 mb-10 text-lg">Collaborons pour donner vie à vos ambitions numériques.</p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="mailto:kimanicet0001@gmail.com"
+            class="p-4 bg-white/5 rounded-2xl hover:bg-primary transition-colors hover:text-white" title="Email"><i
+              data-lucide="mail"></i></a>
+          <a href="https://wa.me/25762211729"
+            class="p-4 bg-white/5 rounded-2xl hover:bg-green-600 transition-colors hover:text-white" title="WhatsApp"><i
+              data-lucide="message-circle"></i></a>
+          <a href="https://www.linkedin.com/in/kimanicet/"
+            class="p-4 bg-white/5 rounded-2xl hover:bg-blue-600 transition-colors hover:text-white" title="LinkedIn"><i
+              data-lucide="linkedin"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-12 text-center text-gray-600 text-[10px] md:text-sm tracking-widest uppercase px-6">
+    <p>© 2026 — KIM Anicet • Conçu avec précision</p>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+
+    // Menu Mobile Interactif
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Fermer le menu au clic sur un lien
+    document.querySelectorAll('#mobileMenu a').forEach(link => {
+        link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+    });
+
+    const projects = [
+      { name: "JENOVA", desc: "Écosystème digital valorisant les talents locaux via une interface moderne.", icon: "users", color: "text-blue-400" },
+      { name: "EXETAT PREP", desc: "Application d'e-learning optimisée pour la réussite scolaire.", icon: "book-open", color: "text-purple-400" },
+      { name: "EduBOURSE", desc: "Centralisateur d'opportunités académiques internationales.", icon: "award", color: "text-yellow-400" },
+      { name: "Triage E-Santé", desc: "Algorithme d'aide au diagnostic rapide pour centres de santé.", icon: "activity", color: "text-red-400" }
+    ];
+
+    const grid = document.getElementById("projectsGrid");
+    projects.forEach((p, index) => {
+      const card = document.createElement("div");
+      card.className = "group relative p-8 glass rounded-3xl transition-all hover:-translate-y-2 border-white/5 hover:border-primary/30";
+      card.innerHTML = `
+        <div class="flex justify-between items-start mb-6">
+          <div class="p-3 bg-white/5 rounded-2xl ${p.color}"><i data-lucide="${p.icon}"></i></div>
+          <i data-lucide="external-link" class="w-5 h-5 text-gray-600 group-hover:text-primary transition-colors"></i>
+        </div>
+        <h4 class="text-2xl font-bold mb-3">${p.name}</h4>
+        <p class="text-gray-400 leading-relaxed mb-6">${p.desc}</p>
+        <div class="h-1 w-full bg-white/5 rounded-full overflow-hidden">
+          <div class="h-full bg-primary w-0 group-hover:w-full transition-all duration-700"></div>
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+    lucide.createIcons();
+  </script>
 </body>
+
 </html>
