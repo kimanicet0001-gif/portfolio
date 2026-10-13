@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>KIM Anicet | Portfolio</title>
+  <meta name="description" content="Portfolio de KIM Anicet : télécommunications, WiFi & MikroTik, sécurité des réseaux, design web et graphique." />
+  <meta name="theme-color" content="#07060f" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+
+<body>
+  <div class="ambient" aria-hidden="true"><span class="orb o1"></span><span class="orb o2"></span><span class="orb o3"></span></div>
+
+  <a class="skip" href="#about">Aller au contenu</a>
+
+  <header class="topbar">
+    <a href="#home" class="brand" aria-label="KIM Anicet, retour à l'accueil">
+      <span class="brand-mark" id="brandMark">KA</span>
+      <span class="brand-name" id="brandName">KIM Anicet</span>
+    </a>
+    <div class="edit-pill admin-only" id="editPill">
+      <span class="dot"></span> Mode édition
+      <button type="button" class="btn-mini" data-open-admin="profile">Panneau</button>
+      <button type="button" class="btn-mini ghost" id="exitEdit">Quitter</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- ACCUEIL -->
+    <section id="home" class="hero" aria-labelledby="heroTitle">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <p class="badge reveal" id="heroBadge"><span class="ping"></span><span id="heroBadgeText"></span></p>
+          <h1 id="heroTitle" class="reveal"></h1>
+          <p class="hero-role reveal" id="heroRole"></p>
+          <p class="hero-intro reveal" id="heroIntro"></p>
+          <div class="cta reveal">
+            <a href="#projects" class="btn primary">Voir mes projets <svg class="i" data-i="arrow"></svg></a>
+            <a href="#contact" class="btn glass">Me contacter</a>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal">
+          <div class="carousel" id="carousel" tabindex="0" role="region" aria-roledescription="carrousel" aria-label="Photos de KIM Anicet">
+            <div class="slides" id="slides" aria-live="off"></div>
+            <div class="carousel-shade"></div>
+            <div class="carousel-top">
+              <span class="counter" id="counter">01 / 01</span>
+              <div class="edit-tools admin-only">
+                <button type="button" class="tool" id="addPhotoBtn" title="Ajouter des photos" aria-label="Ajouter des photos"><svg class="i" data-i="plus"></svg></button>
+                <button type="button" class="tool danger" id="delPhotoBtn" title="Retirer cette photo" aria-label="Retirer cette photo"><svg class="i" data-i="trash"></svg></button>
+              </div>
+            </div>
+            <div class="carousel-bottom">
+              <div class="dots" id="dots" role="tablist" aria-label="Choisir une photo"></div>
+              <div class="arrows">
+                <button type="button" class="arrow" id="prevBtn" aria-label="Photo précédente"><svg class="i" data-i="left"></svg></button>
+                <button type="button" class="arrow" id="nextBtn" aria-label="Photo suivante"><svg class="i" data-i="right"></svg></button>
+              </div>
+            </div>
+            <div class="progress"><span id="progressBar"></span></div>
+            <input type="file" id="photoInput" accept="image/*" multiple hidden />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- A PROPOS -->
+    <section id="about" class="section" aria-labelledby="aboutTitle">
+      <div class="wrap about">
+        <div class="section-head reveal">
+          <span class="eyebrow">À propos</span>
+          <h2 id="aboutTitle"></h2>
+        </div>
+        <div class="about-body reveal">
+          <div class="about-text" id="aboutText"></div>
+          <ul class="tags" id="tags" aria-label="Domaines"></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERTISE -->
+    <section id="skills" class="section" aria-labelledby="skillsTitle">
+      <div class="wrap">
+        <div class="section-head center reveal">
+          <span class="eyebrow">Expertise</span>
+          <h2 id="skillsTitle">Ce que je sais faire</h2>
+          <p class="lead">Du câblage du signal WiFi à l'interface qui s'affiche à l'écran.</p>
+        </div>
+        <div class="skills-grid" id="skillsGrid"></div>
+      </div>
+    </section>
+
+    <!-- PROJETS -->
+    <section id="projects" class="section" aria-labelledby="projectsTitle">
+      <div class="wrap">
+        <div class="section-head center reveal">
+          <span class="eyebrow">Projets</span>
+          <h2 id="projectsTitle">Projets sélectionnés</h2>
+          <p class="lead">Des produits concrets, en ligne, que tu peux ouvrir et tester.</p>
+        </div>
+        <div class="projects-grid" id="projectsGrid"></div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section" aria-labelledby="contactTitle">
+      <div class="wrap">
+        <div class="contact-card reveal">
+          <span class="eyebrow">Contact</span>
+          <h2 id="contactTitle">Prêt à démarrer un projet ?</h2>
+          <p class="lead">Réseau, WiFi, site web ou identité visuelle : collaborons pour donner vie à vos ambitions numériques.</p>
+          <div class="contact-links" id="contactLinks"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p id="footerText">© 2026 · KIM Anicet · Conçu avec précision</p>
+    <button type="button" class="lock-btn" data-open-admin="profile" aria-label="Espace administrateur" title="Espace administrateur"><svg class="i" data-i="lock"></svg></button>
+  </footer>
+
+  <!-- BARRE DE NAVIGATION -->
+  <nav class="dock" id="dock" aria-label="Navigation principale">
+    <a href="#home" class="dock-item" data-target="home"><svg class="i" data-i="home"></svg><span>Accueil</span></a>
+    <a href="#about" class="dock-item" data-target="about"><svg class="i" data-i="user"></svg><span>Profil</span></a>
+    <a href="#skills" class="dock-item" data-target="skills"><svg class="i" data-i="explore"></svg><span>Expertise</span></a>
+    <a href="#projects" class="dock-item" data-target="projects"><svg class="i" data-i="projects"></svg><span>Projets</span></a>
+    <a href="#contact" class="dock-item" data-target="contact"><svg class="i" data-i="mail"></svg><span>Contact</span></a>
+  </nav>
+
+  <!-- ESPACE ADMIN -->
+  <div class="scrim" id="scrim" hidden></div>
+  <aside class="admin" id="admin" role="dialog" aria-modal="true" aria-labelledby="adminTitle" hidden>
+    <div class="admin-head">
+      <h2 id="adminTitle">Espace administrateur</h2>
+      <button type="button" class="icon-btn" id="closeAdmin" aria-label="Fermer"><svg class="i" data-i="x"></svg></button>
+    </div>
+    <div id="adminBody" class="admin-body"></div>
+  </aside>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
